@@ -1,0 +1,14 @@
+<!DOCTYPE HTML>
+<html><head><meta charset="UTF-8"><title>Main</title><style>html,head,body { padding:0; margin:0; }
+body { font-family: calibri, helvetica, arial, sans-serif; }</style><script type="text/javascript" src="Demo.js">
+  </script></head><body><script type="text/javascript">var app = Elm.Main.fullscreen()</script></body>
+<script type="text/javascript">
+    var storageKey = "token";
+    app.ports.saveToLocalStorage.subscribe(function(value) {
+      localStorage.setItem(storageKey, value);
+    });
+    app.ports.doLoadFromLocalStorage.subscribe(function() {
+      app.ports.loadFromLocalStorage.send(parseInt(localStorage.getItem(storageKey)));
+    });
+</script>
+</html>
